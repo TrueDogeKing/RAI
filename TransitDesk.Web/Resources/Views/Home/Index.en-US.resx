@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Strona główna" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Witaj w systemie TransitDesk" xml:space="preserve">
+    <value>Welcome to TransitDesk</value>
+  </data>
+  <data name="Centralny portal dyspozytorski miejskiego przedsiębiorstwa transportowego." xml:space="preserve">
+    <value>The central dispatch portal of the municipal transport company.</value>
+  </data>
+  <data name="Prowadź ewidencję taboru, przyjmuj zgłoszenia awarii i incydentów oraz monitoruj wybrane pojazdy." xml:space="preserve">
+    <value>Manage the rolling stock registry, accept failure and incident reports, and keep an eye on selected vehicles.</value>
+  </data>
+  <data name="Ewidencja floty" xml:space="preserve">
+    <value>Fleet registry</value>
+  </data>
+  <data name="Przeglądaj autobusy i tramwaje według zajezdni oraz rejestruj nowe pojazdy." xml:space="preserve">
+    <value>Browse buses and trams by depot and register new vehicles.</value>
+  </data>
+  <data name="Przejdź do floty" xml:space="preserve">
+    <value>Go to fleet</value>
+  </data>
+  <data name="Zgłoszenia incydentów" xml:space="preserve">
+    <value>Incident reports</value>
+  </data>
+  <data name="Zgłoś awarię, kolizję lub incydent z udziałem pasażera wraz z dokumentacją." xml:space="preserve">
+    <value>Report a breakdown, collision or passenger incident together with supporting documents.</value>
+  </data>
+  <data name="Zgłoś incydent" xml:space="preserve">
+    <value>Report incident</value>
+  </data>
+  <data name="Zajezdnie" xml:space="preserve">
+    <value>Depots</value>
+  </data>
+  <data name="Szybki podgląd taboru wybranej zajezdni." xml:space="preserve">
+    <value>Quick overview of a depot's rolling stock.</value>
+  </data>
+  <data name="tramwaje" xml:space="preserve">
+    <value>trams</value>
+  </data>
+  <data name="autobusy" xml:space="preserve">
+    <value>buses</value>
+  </data>
+</root>

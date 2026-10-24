@@ -1,0 +1,8 @@
+@* Odczyt TempData usuwa wpis – komunikat PRG pojawi się dokładnie raz. *@
+@if (TempData["SuccessMessage"] is string successMessage)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert" data-testid="success-alert">
+        @successMessage
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Zamknij"></button>
+    </div>
+}

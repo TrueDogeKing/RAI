@@ -1,0 +1,80 @@
+﻿@inject IViewLocalizer Localizer
+@{
+    // Licznik monitorowanych pojazdów czytany bezpośrednio z sesji bieżącego żądania.
+    // ISessionFeature zamiast Context.Session – ten drugi rzuca wyjątek, gdy UseSession nie objął żądania.
+    var session = Context.Features.Get<Microsoft.AspNetCore.Http.Features.ISessionFeature>()?.Session;
+    var watchedCount = session?.GetObject<List<WatchedVehicle>>(SessionKeys.Watchlist)?.Count ?? 0;
+    var currentUiCulture = System.Globalization.CultureInfo.CurrentUICulture.Name;
+    var returnUrl = $"{Context.Request.PathBase}{Context.Request.Path}{Context.Request.QueryString}";
+}
+<!DOCTYPE html>
+<html lang="@currentUiCulture">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TransitDesk</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/TransitDesk.Web.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold" asp-area="" asp-controller="Home" asp-action="Index">TransitDesk</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-lg-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">@Localizer["Strona główna"]</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Vehicles" asp-action="Index">@Localizer["Ewidencja floty"]</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Vehicles" asp-action="Create">@Localizer["Dodaj pojazd"]</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Incidents" asp-action="Report">@Localizer["Zgłoś incydent"]</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Incidents" asp-action="Index">@Localizer["Zgłoszenia"]</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Vehicles" asp-action="Watchlist">
+                                @Localizer["Monitorowane"]
+                                <span class="badge rounded-pill @(watchedCount > 0 ? "bg-warning text-dark" : "bg-light text-dark")" data-testid="watchlist-count">@watchedCount</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <form asp-controller="Home" asp-action="SetLanguage" method="post" class="d-flex gap-1">
+                        <input type="hidden" name="returnUrl" value="@returnUrl" />
+                        <button type="submit" name="culture" value="pl-PL"
+                                class="btn btn-sm @(currentUiCulture == "pl-PL" ? "btn-light" : "btn-outline-light")">PL</button>
+                        <button type="submit" name="culture" value="en-US"
+                                class="btn btn-sm @(currentUiCulture == "en-US" ? "btn-light" : "btn-outline-light")">EN</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2026 - TransitDesk - <a asp-area="" asp-controller="Home" asp-action="Privacy">@Localizer["Prywatność"]</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

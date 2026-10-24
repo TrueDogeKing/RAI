@@ -1,0 +1,70 @@
+@model VehicleViewModel
+@{
+    ViewData["Title"] = "Rejestracja nowego pojazdu";
+}
+
+<h1 class="h2">@ViewData["Title"]</h1>
+
+<form asp-controller="Vehicles" asp-action="Create" method="post" class="col-lg-8" novalidate>
+    @* Tylko błędy przypisane do całego modelu (klucz ""), np. duplikat numeru bocznego. *@
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label asp-for="SideNumber" class="form-label"></label>
+            <input asp-for="SideNumber" class="form-control" />
+            <span asp-validation-for="SideNumber" class="text-danger"></span>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label asp-for="ModelName" class="form-label"></label>
+            <input asp-for="ModelName" class="form-control" placeholder="np. Solaris Urbino 12" />
+            <span asp-validation-for="ModelName" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label asp-for="DepotName" class="form-label"></label>
+            <select asp-for="DepotName" asp-items="ViewBag.Depots" class="form-select">
+                <option value="">— wybierz —</option>
+            </select>
+            <span asp-validation-for="DepotName" class="text-danger"></span>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label asp-for="TractionType" class="form-label"></label>
+            <select asp-for="TractionType" asp-items="Html.GetEnumSelectList<TractionType>()" class="form-select"></select>
+            <span asp-validation-for="TractionType" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label asp-for="ProductionYear" class="form-label"></label>
+            <input asp-for="ProductionYear" class="form-control" />
+            <span asp-validation-for="ProductionYear" class="text-danger"></span>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label asp-for="Capacity" class="form-label"></label>
+            <input asp-for="Capacity" class="form-control" />
+            <span asp-validation-for="Capacity" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ServiceStatus" class="form-label"></label>
+        <select asp-for="ServiceStatus" asp-items="Html.GetEnumSelectList<ServiceStatus>()" class="form-select"></select>
+        <span asp-validation-for="ServiceStatus" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3 form-check">
+        <input asp-for="IsLowFloor" class="form-check-input" />
+        <label asp-for="IsLowFloor" class="form-check-label"></label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Zapisz pojazd w rejestrze</button>
+    <a asp-action="Index" class="btn btn-link">Anuluj</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

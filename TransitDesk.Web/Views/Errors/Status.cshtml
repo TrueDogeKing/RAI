@@ -1,0 +1,14 @@
+@{
+    ViewData["Title"] = $"{ViewBag.StatusCode} – {ViewBag.Title}";
+}
+
+<div class="text-center py-5" data-testid="error-page">
+    <p class="display-1 fw-bold text-danger mb-0">@ViewBag.StatusCode</p>
+    <h1 class="h3">@ViewBag.Title</h1>
+    <p class="lead">@ViewBag.Message</p>
+    @if (ViewBag.OriginalPath is string originalPath)
+    {
+        <p class="text-muted small">Żądany adres: <code>@originalPath</code></p>
+    }
+    <a class="btn btn-primary" asp-controller="Home" asp-action="Index">Wróć na stronę główną</a>
+</div>

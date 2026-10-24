@@ -1,0 +1,42 @@
+@model Vehicle
+@{
+    ViewData["Title"] = $"Pojazd #{Model.SideNumber}";
+}
+
+<partial name="_SuccessAlert" />
+
+<h1 class="h2">@ViewData["Title"] <small class="text-muted">@Model.ModelName</small></h1>
+
+<dl class="row">
+    <dt class="col-sm-3">Rodzaj trakcji</dt>
+    <dd class="col-sm-9">@Model.TractionType.GetDisplayName()</dd>
+    <dt class="col-sm-3">Zajezdnia</dt>
+    <dd class="col-sm-9"><a asp-route="depot_fleet" asp-route-depotName="@Model.DepotName">@Model.DepotName</a></dd>
+    <dt class="col-sm-3">Rok produkcji</dt>
+    <dd class="col-sm-9">@Model.ProductionYear</dd>
+    <dt class="col-sm-3">Pojemność</dt>
+    <dd class="col-sm-9">@Model.Capacity pasażerów</dd>
+    <dt class="col-sm-3">Niskopodłogowy</dt>
+    <dd class="col-sm-9">@(Model.IsLowFloor ? "tak" : "nie")</dd>
+    <dt class="col-sm-3">Status</dt>
+    <dd class="col-sm-9">@Model.ServiceStatus.GetDisplayName()</dd>
+</dl>
+
+<div class="d-flex flex-wrap gap-3 align-items-end">
+    <form asp-action="ChangeStatus" method="post" class="d-flex gap-2 align-items-end">
+        <input type="hidden" name="sideNumber" value="@Model.SideNumber" />
+        <div>
+            <label for="serviceStatus" class="form-label">Zmień status</label>
+            <select id="serviceStatus" name="serviceStatus" class="form-select" asp-items="ViewBag.StatusOptions"></select>
+        </div>
+        <button type="submit" class="btn btn-outline-primary">Zapisz status</button>
+    </form>
+
+    <form asp-action="AddVehicleToWatchlist" method="post">
+        <input type="hidden" name="sideNumber" value="@Model.SideNumber" />
+        <input type="hidden" name="returnUrl" value="@($"{Context.Request.PathBase}{Context.Request.Path}")" />
+        <button type="submit" class="btn btn-warning">Dodaj do monitorowanych</button>
+    </form>
+</div>
+
+<p class="mt-4"><a asp-action="Index">← Ewidencja floty</a></p>

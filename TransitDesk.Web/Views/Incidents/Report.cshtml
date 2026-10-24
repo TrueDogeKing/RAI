@@ -1,0 +1,60 @@
+@model IncidentReportViewModel
+@{
+    ViewData["Title"] = "Zgłoszenie incydentu";
+    // Plik nie jest częścią modelu (IFormFile? attachmentFile to osobny parametr akcji),
+    // więc jego błędy odczytujemy z ModelState ręcznie, pod kluczem "attachmentFile".
+    var attachmentErrors = ViewData.ModelState["attachmentFile"]?.Errors ?? [];
+}
+
+<h1 class="h2">@ViewData["Title"]</h1>
+
+@* enctype="multipart/form-data" – bez tego przeglądarka wyśle tylko nazwę pliku, nie jego zawartość. *@
+<form asp-controller="Incidents" asp-action="Report" method="post" enctype="multipart/form-data" class="col-lg-8">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <label asp-for="LineNumber" class="form-label"></label>
+            <input asp-for="LineNumber" class="form-control" placeholder="np. 6, 199, N1" />
+            <span asp-validation-for="LineNumber" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label asp-for="VehicleSideNumber" class="form-label"></label>
+            <input asp-for="VehicleSideNumber" class="form-control" placeholder="np. 2072" />
+            <span asp-validation-for="VehicleSideNumber" class="text-danger"></span>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label asp-for="OccurredAt" class="form-label"></label>
+            <input asp-for="OccurredAt" class="form-control" />
+            <span asp-validation-for="OccurredAt" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="IncidentType" class="form-label"></label>
+        <select asp-for="IncidentType" asp-items="Html.GetEnumSelectList<IncidentType>()" class="form-select"></select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label"></label>
+        <textarea asp-for="Description" class="form-control" rows="5"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label for="attachmentFile" class="form-label">Załącznik (JPG, PNG lub PDF, maks. 5 MB)</label>
+        <input type="file" id="attachmentFile" name="attachmentFile" class="form-control @(attachmentErrors.Count > 0 ? "input-validation-error" : "")"
+               accept=".jpg,.jpeg,.png,.pdf,image/jpeg,image/png,application/pdf" />
+        @foreach (var error in attachmentErrors)
+        {
+            <span class="text-danger d-block">@error.ErrorMessage</span>
+        }
+    </div>
+
+    <button type="submit" class="btn btn-danger">Wyślij zgłoszenie</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/validation-notinfuture.js" asp-append-version="true"></script>
+}

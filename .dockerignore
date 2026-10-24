@@ -1,0 +1,10 @@
+**/bin/
+**/obj/
+**/App_Data/
+**/.vs/
+**/.vscode/
+**/*.user
+.git/
+TransitDesk.Tests/
+Dockerfile
+.dockerignore

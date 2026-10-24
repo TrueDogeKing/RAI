@@ -1,0 +1,13 @@
+@model IReadOnlyList<Vehicle>
+@{
+    ViewData["Title"] = "Ewidencja floty";
+}
+
+<partial name="_SuccessAlert" />
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h2 mb-0">@ViewData["Title"]</h1>
+    <a class="btn btn-primary" asp-action="Create">+ Dodaj pojazd</a>
+</div>
+
+<partial name="_VehicleTable" model="Model" />

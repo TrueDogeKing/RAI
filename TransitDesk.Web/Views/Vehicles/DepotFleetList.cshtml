@@ -1,0 +1,16 @@
+@model DepotFleetViewModel
+@{
+    ViewData["Title"] = $"Zajezdnia {Model.DepotName}";
+}
+
+<h1 class="h2">@ViewData["Title"]</h1>
+<p class="text-muted">
+    Trakcja: <strong>@(Model.TractionType?.GetDisplayName() ?? "wszystkie")</strong> ·
+    <a asp-route="depot_fleet" asp-route-depotName="@Model.DepotName">wszystkie</a> ·
+    <a asp-route="depot_fleet" asp-route-depotName="@Model.DepotName" asp-route-tractionType="tramwaj">tramwaje</a> ·
+    <a asp-route="depot_fleet" asp-route-depotName="@Model.DepotName" asp-route-tractionType="autobus">autobusy</a>
+</p>
+
+<partial name="_VehicleTable" model="Model.Vehicles" />
+
+<a asp-action="Index">← Pełna ewidencja</a>

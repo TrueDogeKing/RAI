@@ -1,0 +1,50 @@
+@model IReadOnlyList<IncidentReport>
+@{
+    ViewData["Title"] = "Rejestr zgłoszeń";
+}
+
+<partial name="_SuccessAlert" />
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h2 mb-0">@ViewData["Title"]</h1>
+    <a class="btn btn-danger" asp-action="Report">Zgłoś incydent</a>
+</div>
+
+@if (Model.Count == 0)
+{
+    <p class="text-muted">Brak zarejestrowanych zgłoszeń.</p>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-striped align-middle">
+            <thead>
+                <tr><th>#</th><th>Linia</th><th>Pojazd</th><th>Rodzaj</th><th>Data zdarzenia</th><th>Opis</th><th>Załącznik</th></tr>
+            </thead>
+            <tbody>
+                @foreach (var incident in Model)
+                {
+                    <tr>
+                        <td>@incident.Id</td>
+                        <td>@incident.LineNumber</td>
+                        <td><a asp-controller="Vehicles" asp-action="Details" asp-route-sideNumber="@incident.VehicleSideNumber">#@incident.VehicleSideNumber</a></td>
+                        <td>@incident.IncidentType.GetDisplayName()</td>
+                        <td>@incident.OccurredAt.ToString("g")</td>
+                        <td>@incident.Description</td>
+                        <td>
+                            @if (incident.AttachmentStoredFileName is not null)
+                            {
+                                @* Oryginalna nazwa wyświetlana jest zakodowana przez Razor (ochrona przed XSS). *@
+                                <a asp-action="Attachment" asp-route-id="@incident.Id">@incident.AttachmentOriginalFileName</a>
+                            }
+                            else
+                            {
+                                <span class="text-muted">—</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

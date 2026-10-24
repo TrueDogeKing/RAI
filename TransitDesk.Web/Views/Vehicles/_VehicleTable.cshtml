@@ -1,0 +1,56 @@
+@model IReadOnlyList<Vehicle>
+
+@if (Model.Count == 0)
+{
+    <p class="text-muted">Brak pojazdów spełniających kryteria.</p>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-striped align-middle">
+            <thead>
+                <tr>
+                    <th>Nr boczny</th>
+                    <th>Model</th>
+                    <th>Trakcja</th>
+                    <th>Zajezdnia</th>
+                    <th>Rok</th>
+                    <th>Pojemność</th>
+                    <th>Niskopodłogowy</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var vehicle in Model)
+                {
+                    <tr>
+                        <td><a asp-action="Details" asp-route-sideNumber="@vehicle.SideNumber">#@vehicle.SideNumber</a></td>
+                        <td>@vehicle.ModelName</td>
+                        <td>@vehicle.TractionType.GetDisplayName()</td>
+                        <td><a asp-route="depot_fleet" asp-route-depotName="@vehicle.DepotName">@vehicle.DepotName</a></td>
+                        <td>@vehicle.ProductionYear</td>
+                        <td>@vehicle.Capacity</td>
+                        <td>@(vehicle.IsLowFloor ? "tak" : "nie")</td>
+                        <td>
+                            <span class="badge @(vehicle.ServiceStatus switch
+                            {
+                                ServiceStatus.Active => "bg-success",
+                                ServiceStatus.InMaintenance => "bg-warning text-dark",
+                                ServiceStatus.Reserve => "bg-info text-dark",
+                                _ => "bg-secondary"
+                            })">@vehicle.ServiceStatus.GetDisplayName()</span>
+                        </td>
+                        <td>
+                            <form asp-controller="Vehicles" asp-action="AddVehicleToWatchlist" method="post" class="d-inline">
+                                <input type="hidden" name="sideNumber" value="@vehicle.SideNumber" />
+                                <input type="hidden" name="returnUrl" value="@($"{Context.Request.PathBase}{Context.Request.Path}")" />
+                                <button type="submit" class="btn btn-sm btn-outline-warning">Monitoruj</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

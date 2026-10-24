@@ -1,0 +1,42 @@
+﻿@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["Strona główna"];
+}
+
+<div class="text-center py-4">
+    <h1 class="display-5">@Localizer["Witaj w systemie TransitDesk"]</h1>
+    <p class="lead">@Localizer["Centralny portal dyspozytorski miejskiego przedsiębiorstwa transportowego."]</p>
+    <p class="text-muted">@Localizer["Prowadź ewidencję taboru, przyjmuj zgłoszenia awarii i incydentów oraz monitoruj wybrane pojazdy."]</p>
+</div>
+
+<div class="row g-3">
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h2 class="h5 card-title">@Localizer["Ewidencja floty"]</h2>
+                <p class="card-text">@Localizer["Przeglądaj autobusy i tramwaje według zajezdni oraz rejestruj nowe pojazdy."]</p>
+                <a class="btn btn-primary" asp-controller="Vehicles" asp-action="Index">@Localizer["Przejdź do floty"]</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h2 class="h5 card-title">@Localizer["Zgłoszenia incydentów"]</h2>
+                <p class="card-text">@Localizer["Zgłoś awarię, kolizję lub incydent z udziałem pasażera wraz z dokumentacją."]</p>
+                <a class="btn btn-primary" asp-controller="Incidents" asp-action="Report">@Localizer["Zgłoś incydent"]</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h2 class="h5 card-title">@Localizer["Zajezdnie"]</h2>
+                <p class="card-text">@Localizer["Szybki podgląd taboru wybranej zajezdni."]</p>
+                <a class="btn btn-outline-primary btn-sm mb-1" asp-route="depot_fleet" asp-route-depotName="Wrzeszcz">Wrzeszcz</a>
+                <a class="btn btn-outline-primary btn-sm mb-1" asp-route="depot_fleet" asp-route-depotName="Nowy Port" asp-route-tractionType="tramwaj">Nowy Port (@Localizer["tramwaje"])</a>
+                <a class="btn btn-outline-primary btn-sm mb-1" asp-route="depot_fleet" asp-route-depotName="Hallera" asp-route-tractionType="autobus">Hallera (@Localizer["autobusy"])</a>
+            </div>
+        </div>
+    </div>
+</div>
