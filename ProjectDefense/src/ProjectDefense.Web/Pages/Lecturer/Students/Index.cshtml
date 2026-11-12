@@ -1,0 +1,57 @@
+@page
+@model ProjectDefense.Web.Pages.Lecturer.Students.IndexModel
+@{
+    ViewData["Title"] = L["Students"];
+}
+
+<h1 class="mb-3">@L["Students"]</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>@L["Student"]</th>
+            <th>@L["StudentIndexNumber"]</th>
+            <th>@L["YourReservation"]</th>
+            <th>@L["Status"]</th>
+            <th style="min-width: 22rem"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model.Students)
+        {
+            <tr>
+                <td>@student.FullName<small class="text-muted d-block">@student.Email</small></td>
+                <td>@student.IndexNumber</td>
+                <td>@(student.ActiveReservationStart?.ToString("g") ?? "-")</td>
+                <td>
+                    @if (student.IsBanned)
+                    {
+                        <span class="badge text-bg-danger">@L["Banned"]</span>
+                        <small class="d-block">@student.BanReason</small>
+                        <small class="d-block text-muted">@(student.BannedUntil is null ? L["Permanent"].Value : L["Until", student.BannedUntil.Value.ToString("g")].Value)</small>
+                    }
+                    else
+                    {
+                        <span class="badge text-bg-success">@L["Active"]</span>
+                    }
+                </td>
+                <td>
+                    @if (student.IsBanned)
+                    {
+                        <form method="post" asp-page-handler="Unban" asp-route-id="@student.Id">
+                            <button type="submit" class="btn btn-sm btn-outline-success">@L["Unban"]</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <form method="post" asp-page-handler="Ban" asp-route-id="@student.Id" class="row g-1">
+                            <div class="col-6"><input name="Reason" class="form-control form-control-sm" placeholder="@L["BanReason"]" required maxlength="500" /></div>
+                            <div class="col-4"><input name="BannedUntil" type="date" class="form-control form-control-sm" title="@L["BanUntilHelp"]" /></div>
+                            <div class="col-2"><button type="submit" class="btn btn-sm btn-outline-danger w-100">@L["Ban"]</button></div>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

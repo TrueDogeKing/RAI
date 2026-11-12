@@ -1,0 +1,40 @@
+@page
+@model ProjectDefense.Web.Pages.Lecturer.Block.IndexModel
+@{
+    ViewData["Title"] = L["BlockPeriod"];
+}
+
+<h1>@L["BlockPeriod"]</h1>
+<p class="text-muted">@L["BlockPeriodHelp"]</p>
+
+<div class="row">
+    <div class="col-lg-7">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="mb-3">
+                <label asp-for="Input.RoomId" class="form-label"></label>
+                <select asp-for="Input.RoomId" asp-items="Model.RoomList" class="form-select">
+                    <option value="">@L["SelectRoom"]</option>
+                </select>
+                <span asp-validation-for="Input.RoomId" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Input.From" class="form-label"></label>
+                    <input asp-for="Input.From" type="datetime-local" asp-format="{0:yyyy-MM-ddTHH:mm}" class="form-control" />
+                    <span asp-validation-for="Input.From" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Input.To" class="form-label"></label>
+                    <input asp-for="Input.To" type="datetime-local" asp-format="{0:yyyy-MM-ddTHH:mm}" class="form-control" />
+                    <span asp-validation-for="Input.To" class="text-danger"></span>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-warning">@L["Block"]</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

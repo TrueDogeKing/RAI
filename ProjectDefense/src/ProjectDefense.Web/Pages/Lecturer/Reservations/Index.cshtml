@@ -1,0 +1,75 @@
+@page
+@model ProjectDefense.Web.Pages.Lecturer.Reservations.IndexModel
+@{
+    ViewData["Title"] = L["Reservations"];
+}
+
+<h1 class="mb-3">@L["Reservations"]</h1>
+
+<form method="get" class="row g-2 align-items-end mb-3">
+    <div class="col-md-4">
+        <label class="form-label" for="RoomId">@L["Room"]</label>
+        <select id="RoomId" name="RoomId" asp-items="Model.RoomList" class="form-select">
+            <option value="">@L["All"]</option>
+        </select>
+    </div>
+    <div class="col-md-3">
+        <label class="form-label" for="Status">@L["Status"]</label>
+        <select id="Status" name="Status" asp-items="Model.StatusList" class="form-select">
+            <option value="">@L["All"]</option>
+        </select>
+    </div>
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-outline-primary w-100">@L["Filter"]</button>
+    </div>
+</form>
+
+<table class="table table-sm table-striped">
+    <thead>
+        <tr>
+            <th>@L["Room"]</th>
+            <th>@L["Date"]</th>
+            <th>@L["Time"]</th>
+            <th>@L["Status"]</th>
+            <th>@L["Student"]</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var row in Model.Rows)
+        {
+            <tr>
+                <td>@row.RoomNumber</td>
+                <td>@row.StartTime.ToString("ddd") @row.StartTime.ToString("d")</td>
+                <td>@row.StartTime.ToString("HH:mm") &ndash; @row.EndTime.ToString("HH:mm")</td>
+                <td class="status-@row.Status">@L["Status" + row.Status]</td>
+                <td>
+                    @if (row.StudentId is not null)
+                    {
+                        <span>@row.StudentName</span>
+                        <small class="text-muted d-block">@row.StudentEmail @(row.StudentIndexNumber is null ? "" : $"({row.StudentIndexNumber})")</small>
+                    }
+                </td>
+                <td class="text-end">
+                    @if (row.Status == SlotStatus.Booked)
+                    {
+                        <a class="btn btn-sm btn-outline-primary" asp-page="Reassign" asp-route-id="@row.SlotId">@L["Reassign"]</a>
+                        <form method="post" asp-page-handler="Cancel" asp-route-id="@row.SlotId" class="d-inline">
+                            <button type="submit" class="btn btn-sm btn-outline-danger">@L["Cancel"]</button>
+                        </form>
+                    }
+                    else if (row.Status == SlotStatus.Blocked)
+                    {
+                        <form method="post" asp-page-handler="Unblock" asp-route-id="@row.SlotId" class="d-inline">
+                            <button type="submit" class="btn btn-sm btn-outline-secondary">@L["Unblock"]</button>
+                        </form>
+                    }
+                    else if (row.Status == SlotStatus.Past)
+                    {
+                        <span class="badge text-bg-secondary">@L["Locked"]</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

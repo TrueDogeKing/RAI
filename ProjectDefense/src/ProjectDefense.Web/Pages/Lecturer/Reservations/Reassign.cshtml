@@ -1,0 +1,27 @@
+@page "{id:int}"
+@model ProjectDefense.Web.Pages.Lecturer.Reservations.ReassignModel
+@{
+    ViewData["Title"] = L["Reassign"];
+}
+
+<h1>@L["Reassign"]</h1>
+<p>@L["Student"]: <strong>@Model.StudentName</strong></p>
+<p>@L["CurrentSlot"]: <strong>@Model.CurrentLabel</strong></p>
+
+@if (Model.Targets.Count == 0)
+{
+    <div class="alert alert-warning">@L["NoFreeSlots"]</div>
+}
+else
+{
+    <form method="post" class="row g-2 align-items-end">
+        <div class="col-md-8">
+            <label class="form-label" for="TargetSlotId">@L["NewSlot"]</label>
+            <select id="TargetSlotId" name="TargetSlotId" asp-items="Model.Targets" class="form-select"></select>
+        </div>
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-primary">@L["Reassign"]</button>
+            <a class="btn btn-link" asp-page="Index">@L["BackToList"]</a>
+        </div>
+    </form>
+}
