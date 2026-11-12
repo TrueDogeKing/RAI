@@ -9,3 +9,4 @@ obj/
 *.db-wal
 TestResults/
 appsettings.Development.local.json
+mails/

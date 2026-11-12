@@ -61,7 +61,7 @@ Role: `Lecturer` (etykieta „Prowadzący”) i `Student`. Pola `StudentId` i `I
 
 `ApplicationDbContext : IdentityDbContext<ApplicationUser>`, `RequireConfirmedAccount = true`. `DataSeeder` przy starcie tworzy schemat bazy, role, konta testowe, przykładowe sale oraz okno dostępności na najbliższe dni. Nowo zarejestrowany użytkownik automatycznie otrzymuje rolę `Student` (`ApplicationUserManager.CreateAsync`).
 
-Wybrano **lokalny serwer SMTP (Mailpit)** jako domyślną implementację `IEmailSender` (`SmtpEmailSender`), ponieważ nie wymaga konta ani klucza API i pozwala podejrzeć wiadomości w przeglądarce. Implementacja `SendGridEmailSender` jest dostępna po ustawieniu `Email:Provider = SendGrid` i klucza `Email:SendGrid:ApiKey`. Wiadomości wysyłane są jako HTML (`IsBodyHtml = true`), dlatego encje `&amp;` w atrybucie `href` linku potwierdzającego są poprawnie dekodowane przez klienta poczty; wersja tekstowa (SendGrid) powstaje przez zdekodowanie encji HTML.
+Wybrano **lokalny serwer SMTP (Mailpit)** jako domyślną implementację `IEmailSender` (`SmtpEmailSender`), ponieważ nie wymaga konta ani klucza API i pozwala podejrzeć wiadomości w przeglądarce. W środowisku Development domyślnie używany jest `FileEmailSender`, który zapisuje wiadomości jako pliki HTML w katalogu `mails/` aplikacji i wypisuje link potwierdzający w logu konsoli, co pozwala uruchomić projekt bez serwera pocztowego. Implementacja `SendGridEmailSender` jest dostępna po ustawieniu `Email:Provider = SendGrid` i klucza `Email:SendGrid:ApiKey`. Wiadomości wysyłane są jako HTML (`IsBodyHtml = true`), dlatego encje `&amp;` w atrybucie `href` linku potwierdzającego są poprawnie dekodowane przez klienta poczty; wersja tekstowa (SendGrid) powstaje przez zdekodowanie encji HTML.
 
 Autoryzacja: konwencje `AuthorizeFolder("/")` (wszystkie strony wymagają zalogowania), `AuthorizeFolder("/Lecturer", "Lecturer")`, `AuthorizeFolder("/Student", "Student")`. Bez logowania dostępne są wyłącznie strony obszaru Identity (logowanie, rejestracja, potwierdzenie e-mail) oraz strona błędu.
 
@@ -123,7 +123,7 @@ Konta testowe (hasło `Haslo123!`, konfigurowalne w `Seed:DefaultPassword`):
 | Student | `student1@projectdefense.local` |
 | Student | `student2@projectdefense.local` |
 
-Poczta (rejestracja nowych kont): uruchomić Mailpit, np. `docker run -p 8025:8025 -p 1025:1025 axllent/mailpit`, i otworzyć `http://localhost:8025`. Klient konsolowy:
+Poczta (rejestracja nowych kont): w trybie Development wiadomości trafiają do `src/ProjectDefense.Web/mails/*.html`, a link potwierdzający jest wypisywany w konsoli. Aby korzystać z SMTP, należy ustawić `Email:Provider = Smtp` i uruchomić Mailpit, np. `docker run -p 8025:8025 -p 1025:1025 axllent/mailpit`, i otworzyć `http://localhost:8025`. Klient konsolowy:
 
 ```
 dotnet run --project src/ProjectDefense.ConsoleClient -- http://localhost:5080/

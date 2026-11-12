@@ -35,9 +35,14 @@ builder.Services
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.Configure<EmailOptions>(builder.Configuration.GetSection(EmailOptions.SectionName));
-if (string.Equals(builder.Configuration["Email:Provider"], "SendGrid", StringComparison.OrdinalIgnoreCase))
+var emailProvider = builder.Configuration["Email:Provider"] ?? "Smtp";
+if (emailProvider.Equals("SendGrid", StringComparison.OrdinalIgnoreCase))
 {
     builder.Services.AddTransient<IEmailSender, SendGridEmailSender>();
+}
+else if (emailProvider.Equals("File", StringComparison.OrdinalIgnoreCase))
+{
+    builder.Services.AddTransient<IEmailSender, FileEmailSender>();
 }
 else
 {

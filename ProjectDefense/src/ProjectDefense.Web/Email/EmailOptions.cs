@@ -14,6 +14,8 @@ public sealed class EmailOptions
 
     public SendGridSettings SendGrid { get; set; } = new();
 
+    public FileSettings File { get; set; } = new();
+
     public sealed class SmtpSettings
     {
         public string Host { get; set; } = "localhost";
@@ -25,6 +27,11 @@ public sealed class EmailOptions
         public string? UserName { get; set; }
 
         public string? Password { get; set; }
+    }
+
+    public sealed class FileSettings
+    {
+        public string Directory { get; set; } = "mails";
     }
 
     public sealed class SendGridSettings
