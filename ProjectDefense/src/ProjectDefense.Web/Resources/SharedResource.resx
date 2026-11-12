@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Availability" xml:space="preserve">
+    <value>Availability</value>
+  </data>
+  <data name="AvailabilityCount" xml:space="preserve">
+    <value>Availability windows</value>
+  </data>
+  <data name="AvailabilityDeleted" xml:space="preserve">
+    <value>The availability window has been deleted.</value>
+  </data>
+  <data name="AvailabilityHasBookings" xml:space="preserve">
+    <value>An availability window with bookings cannot be deleted.</value>
+  </data>
+  <data name="AvailabilityHasPastSlots" xml:space="preserve">
+    <value>An availability window containing past slots cannot be deleted.</value>
+  </data>
+  <data name="AvailabilityNotFound" xml:space="preserve">
+    <value>Availability window not found.</value>
+  </data>
+  <data name="AvailableSlots" xml:space="preserve">
+    <value>Available slots</value>
+  </data>
+  <data name="BackToList" xml:space="preserve">
+    <value>Back to list</value>
+  </data>
+  <data name="Ban" xml:space="preserve">
+    <value>Ban</value>
+  </data>
+  <data name="BanReason" xml:space="preserve">
+    <value>Ban reason</value>
+  </data>
+  <data name="BanReasonRequired" xml:space="preserve">
+    <value>Please provide a reason for the ban.</value>
+  </data>
+  <data name="BanUntilHelp" xml:space="preserve">
+    <value>Ban end date (empty = permanent)</value>
+  </data>
+  <data name="BanUntilInPast" xml:space="preserve">
+    <value>The ban end date must be in the future.</value>
+  </data>
+  <data name="Banned" xml:space="preserve">
+    <value>Banned</value>
+  </data>
+  <data name="Block" xml:space="preserve">
+    <value>Block period</value>
+  </data>
+  <data name="BlockPeriod" xml:space="preserve">
+    <value>Block period</value>
+  </data>
+  <data name="BlockPeriodHelp" xml:space="preserve">
+    <value>Blocking a period releases assigned students and prevents new bookings in that time.</value>
+  </data>
+  <data name="BlockRangeInvalid" xml:space="preserve">
+    <value>The end of the range must be later than its start.</value>
+  </data>
+  <data name="Book" xml:space="preserve">
+    <value>Book</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="CancelReservation" xml:space="preserve">
+    <value>Cancel reservation</value>
+  </data>
+  <data name="ChooseSlot" xml:space="preserve">
+    <value>Choose a slot</value>
+  </data>
+  <data name="ConcurrencyConflict" xml:space="preserve">
+    <value>The slot was changed by another user in the meantime. Refresh the page and try again.</value>
+  </data>
+  <data name="CreateRoom" xml:space="preserve">
+    <value>Add room</value>
+  </data>
+  <data name="CurrentSlot" xml:space="preserve">
+    <value>Current slot</value>
+  </data>
+  <data name="DailyEndTime" xml:space="preserve">
+    <value>Daily end time</value>
+  </data>
+  <data name="DailyRange" xml:space="preserve">
+    <value>Daily hours</value>
+  </data>
+  <data name="DailyRangeTooShort" xml:space="preserve">
+    <value>The daily end time must be later than the start time by at least one slot.</value>
+  </data>
+  <data name="DailyStartTime" xml:space="preserve">
+    <value>Daily start time</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="DateRange" xml:space="preserve">
+    <value>Date range</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="DeleteRoom" xml:space="preserve">
+    <value>Delete room</value>
+  </data>
+  <data name="DeleteRoomConfirm" xml:space="preserve">
+    <value>Are you sure you want to delete this room?</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="Download" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="EditRoom" xml:space="preserve">
+    <value>Edit room</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>End date</value>
+  </data>
+  <data name="EndDateBeforeStartDate" xml:space="preserve">
+    <value>The end date cannot be earlier than the start date.</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ErrorDescription" xml:space="preserve">
+    <value>An error occurred while processing your request.</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="ExportCount" xml:space="preserve">
+    <value>Number of entries: {0}</value>
+  </data>
+  <data name="ExportGenerated" xml:space="preserve">
+    <value>Generated: {0}</value>
+  </data>
+  <data name="ExportHelp" xml:space="preserve">
+    <value>Choose a room, a date range and a file format. The file is generated in memory and downloaded directly.</value>
+  </data>
+  <data name="ExportTitle" xml:space="preserve">
+    <value>Defense slot report</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="FooterNote" xml:space="preserve">
+    <value>project defense booking system</value>
+  </data>
+  <data name="Format" xml:space="preserve">
+    <value>Format</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="Generate" xml:space="preserve">
+    <value>Generate slots</value>
+  </data>
+  <data name="GenerateSlots" xml:space="preserve">
+    <value>Generate slots</value>
+  </data>
+  <data name="GenerateSlotsHelp" xml:space="preserve">
+    <value>For each day in the range, consecutive slots of the given length are created within the daily time range.</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Lecturer" xml:space="preserve">
+    <value>Lecturer</value>
+  </data>
+  <data name="LecturerIntro" xml:space="preserve">
+    <value>Manage rooms, availability windows and student bookings.</value>
+  </data>
+  <data name="Locked" xml:space="preserve">
+    <value>Locked (past)</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Log in</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Log out</value>
+  </data>
+  <data name="MaxLength" xml:space="preserve">
+    <value>The field {0} must be at most {1} characters long.</value>
+  </data>
+  <data name="MyReservation" xml:space="preserve">
+    <value>My reservation</value>
+  </data>
+  <data name="NewSlot" xml:space="preserve">
+    <value>New slot</value>
+  </data>
+  <data name="NoActiveReservation" xml:space="preserve">
+    <value>You have no active reservation.</value>
+  </data>
+  <data name="NoFreeSlots" xml:space="preserve">
+    <value>No free slots.</value>
+  </data>
+  <data name="NoRole" xml:space="preserve">
+    <value>Your account has no role assigned.</value>
+  </data>
+  <data name="NoSlotsGenerated" xml:space="preserve">
+    <value>The given parameters do not produce any future slot.</value>
+  </data>
+  <data name="OneActiveReservation" xml:space="preserve">
+    <value>You already have an active reservation. Only one upcoming slot is allowed – use "Reschedule".</value>
+  </data>
+  <data name="OnlyBooked" xml:space="preserve">
+    <value>Booked slots only</value>
+  </data>
+  <data name="PeriodBlocked" xml:space="preserve">
+    <value>Blocked slots: {0}, released reservations: {1}.</value>
+  </data>
+  <data name="Permanent" xml:space="preserve">
+    <value>permanent</value>
+  </data>
+  <data name="Range" xml:space="preserve">
+    <value>The field {0} must be between {1} and {2}.</value>
+  </data>
+  <data name="Reassign" xml:space="preserve">
+    <value>Move to another slot</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="Required" xml:space="preserve">
+    <value>The {0} field is required.</value>
+  </data>
+  <data name="Reschedule" xml:space="preserve">
+    <value>Reschedule</value>
+  </data>
+  <data name="ReservationCancelled" xml:space="preserve">
+    <value>The reservation has been cancelled.</value>
+  </data>
+  <data name="ReservationCreated" xml:space="preserve">
+    <value>The slot has been booked.</value>
+  </data>
+  <data name="ReservationNotFound" xml:space="preserve">
+    <value>Reservation not found.</value>
+  </data>
+  <data name="ReservationReassigned" xml:space="preserve">
+    <value>The student has been moved to the new slot.</value>
+  </data>
+  <data name="ReservationRescheduled" xml:space="preserve">
+    <value>The reservation has been rescheduled.</value>
+  </data>
+  <data name="Reservations" xml:space="preserve">
+    <value>Reservations</value>
+  </data>
+  <data name="Room" xml:space="preserve">
+    <value>Room</value>
+  </data>
+  <data name="RoomConflict" xml:space="preserve">
+    <value>The window overlaps an existing availability window in this room.</value>
+  </data>
+  <data name="RoomDeleted" xml:space="preserve">
+    <value>The room has been deleted.</value>
+  </data>
+  <data name="RoomDetails" xml:space="preserve">
+    <value>Room details</value>
+  </data>
+  <data name="RoomHasAvailabilities" xml:space="preserve">
+    <value>A room with availability windows cannot be deleted.</value>
+  </data>
+  <data name="RoomName" xml:space="preserve">
+    <value>Room name</value>
+  </data>
+  <data name="RoomNotFound" xml:space="preserve">
+    <value>Room not found.</value>
+  </data>
+  <data name="RoomNumber" xml:space="preserve">
+    <value>Room number</value>
+  </data>
+  <data name="RoomNumberTaken" xml:space="preserve">
+    <value>A room with this number already exists.</value>
+  </data>
+  <data name="RoomSaved" xml:space="preserve">
+    <value>The room has been saved.</value>
+  </data>
+  <data name="Rooms" xml:space="preserve">
+    <value>Rooms</value>
+  </data>
+  <data name="SameSlot" xml:space="preserve">
+    <value>Choose a slot different from the current one.</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="SelectRoom" xml:space="preserve">
+    <value>-- select a room --</value>
+  </data>
+  <data name="Slot" xml:space="preserve">
+    <value>Slot</value>
+  </data>
+  <data name="SlotBlocked" xml:space="preserve">
+    <value>The slot is blocked by the lecturer.</value>
+  </data>
+  <data name="SlotDateFormat" xml:space="preserve">
+    <value>MM/dd/yyyy</value>
+  </data>
+  <data name="SlotDurationMinutes" xml:space="preserve">
+    <value>Slot length (min)</value>
+  </data>
+  <data name="SlotDurationOutOfRange" xml:space="preserve">
+    <value>The slot length must be between {0} and {1} minutes.</value>
+  </data>
+  <data name="SlotInPast" xml:space="preserve">
+    <value>A past slot is locked and cannot be changed.</value>
+  </data>
+  <data name="SlotLabel" xml:space="preserve">
+    <value>Room {0} ({1}) – {2}, {3}–{4}</value>
+  </data>
+  <data name="SlotNotFound" xml:space="preserve">
+    <value>Slot not found.</value>
+  </data>
+  <data name="SlotTaken" xml:space="preserve">
+    <value>The slot is already taken.</value>
+  </data>
+  <data name="SlotUnblocked" xml:space="preserve">
+    <value>The slot has been unblocked.</value>
+  </data>
+  <data name="Slots" xml:space="preserve">
+    <value>Booked / total</value>
+  </data>
+  <data name="SlotsGenerated" xml:space="preserve">
+    <value>Slots generated: {0}.</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Start date</value>
+  </data>
+  <data name="StartDateInPast" xml:space="preserve">
+    <value>The start date cannot be in the past.</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="StatusBlocked" xml:space="preserve">
+    <value>Blocked</value>
+  </data>
+  <data name="StatusBooked" xml:space="preserve">
+    <value>Booked</value>
+  </data>
+  <data name="StatusFree" xml:space="preserve">
+    <value>Free</value>
+  </data>
+  <data name="StatusPast" xml:space="preserve">
+    <value>Past</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Student</value>
+  </data>
+  <data name="StudentBanned" xml:space="preserve">
+    <value>Your account is banned from booking.</value>
+  </data>
+  <data name="StudentBannedInfo" xml:space="preserve">
+    <value>The student has been banned and their future reservations released.</value>
+  </data>
+  <data name="StudentIndexNumber" xml:space="preserve">
+    <value>Student ID</value>
+  </data>
+  <data name="StudentNotFound" xml:space="preserve">
+    <value>Student not found.</value>
+  </data>
+  <data name="StudentUnbanned" xml:space="preserve">
+    <value>The ban has been lifted.</value>
+  </data>
+  <data name="Students" xml:space="preserve">
+    <value>Students</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="Unban" xml:space="preserve">
+    <value>Lift ban</value>
+  </data>
+  <data name="Unblock" xml:space="preserve">
+    <value>Unblock</value>
+  </data>
+  <data name="Until" xml:space="preserve">
+    <value>until {0}</value>
+  </data>
+  <data name="UpcomingBookings" xml:space="preserve">
+    <value>Upcoming bookings</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Welcome, {0}!</value>
+  </data>
+  <data name="WorkstationsCount" xml:space="preserve">
+    <value>Workstations</value>
+  </data>
+  <data name="YourReservation" xml:space="preserve">
+    <value>Your reservation</value>
+  </data>
+</root>
