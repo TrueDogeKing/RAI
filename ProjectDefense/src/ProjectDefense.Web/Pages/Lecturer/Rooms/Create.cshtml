@@ -1,0 +1,22 @@
+@page
+@model ProjectDefense.Web.Pages.Lecturer.Rooms.CreateModel
+@{
+    ViewData["Title"] = L["CreateRoom"];
+}
+
+<h1>@L["CreateRoom"]</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <partial name="_RoomForm" for="Room" />
+            <button type="submit" class="btn btn-primary">@L["Save"]</button>
+            <a class="btn btn-link" asp-page="Index">@L["BackToList"]</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

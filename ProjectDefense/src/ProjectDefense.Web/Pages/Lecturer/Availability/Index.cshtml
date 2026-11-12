@@ -1,0 +1,42 @@
+@page
+@model ProjectDefense.Web.Pages.Lecturer.Availability.IndexModel
+@{
+    ViewData["Title"] = L["Availability"];
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1>@L["Availability"]</h1>
+    <a class="btn btn-primary" asp-page="Create">@L["GenerateSlots"]</a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>@L["Room"]</th>
+            <th>@L["Lecturer"]</th>
+            <th>@L["DateRange"]</th>
+            <th>@L["DailyRange"]</th>
+            <th>@L["SlotDurationMinutes"]</th>
+            <th>@L["Slots"]</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Items)
+        {
+            <tr>
+                <td>@item.RoomNumber (@item.RoomName)</td>
+                <td>@item.LecturerName</td>
+                <td>@item.StartDate.ToString("d") &ndash; @item.EndDate.ToString("d")</td>
+                <td>@item.DailyStartTime.ToString("HH:mm") &ndash; @item.DailyEndTime.ToString("HH:mm")</td>
+                <td>@item.SlotDurationMinutes</td>
+                <td>@item.BookedCount / @item.SlotCount</td>
+                <td class="text-end">
+                    <form method="post" asp-page-handler="Delete" asp-route-id="@item.Id" class="d-inline">
+                        <button type="submit" class="btn btn-sm btn-outline-danger" disabled="@(item.BookedCount > 0)">@L["Delete"]</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,36 @@
+@page
+@model ProjectDefense.Web.Pages.Lecturer.Rooms.IndexModel
+@{
+    ViewData["Title"] = L["Rooms"];
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1>@L["Rooms"]</h1>
+    <a class="btn btn-primary" asp-page="Create">@L["CreateRoom"]</a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>@L["RoomNumber"]</th>
+            <th>@L["RoomName"]</th>
+            <th>@L["WorkstationsCount"]</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var room in Model.Rooms)
+        {
+            <tr>
+                <td>@room.RoomNumber</td>
+                <td>@room.Name</td>
+                <td>@room.WorkstationsCount</td>
+                <td class="text-end">
+                    <a class="btn btn-sm btn-outline-secondary" asp-page="Details" asp-route-id="@room.Id">@L["Details"]</a>
+                    <a class="btn btn-sm btn-outline-primary" asp-page="Edit" asp-route-id="@room.Id">@L["Edit"]</a>
+                    <a class="btn btn-sm btn-outline-danger" asp-page="Delete" asp-route-id="@room.Id">@L["Delete"]</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,23 @@
+@page "{id:int}"
+@model ProjectDefense.Web.Pages.Lecturer.Rooms.DetailsModel
+@{
+    ViewData["Title"] = L["RoomDetails"];
+}
+
+<h1>@L["RoomDetails"]</h1>
+
+<dl class="row">
+    <dt class="col-sm-3">@L["RoomNumber"]</dt>
+    <dd class="col-sm-9">@Model.Room.RoomNumber</dd>
+    <dt class="col-sm-3">@L["RoomName"]</dt>
+    <dd class="col-sm-9">@Model.Room.Name</dd>
+    <dt class="col-sm-3">@L["WorkstationsCount"]</dt>
+    <dd class="col-sm-9">@Model.Room.WorkstationsCount</dd>
+    <dt class="col-sm-3">@L["AvailabilityCount"]</dt>
+    <dd class="col-sm-9">@Model.AvailabilityCount</dd>
+    <dt class="col-sm-3">@L["UpcomingBookings"]</dt>
+    <dd class="col-sm-9">@Model.UpcomingBookings</dd>
+</dl>
+
+<a class="btn btn-primary" asp-page="Edit" asp-route-id="@Model.Room.Id">@L["Edit"]</a>
+<a class="btn btn-link" asp-page="Index">@L["BackToList"]</a>
