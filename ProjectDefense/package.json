@@ -1,0 +1,14 @@
+{
+  "name": "projectdefense",
+  "private": true,
+  "scripts": {
+    "dev": "dotnet watch --project src/ProjectDefense.Web --launch-profile http",
+    "dev:https": "dotnet watch --project src/ProjectDefense.Web --launch-profile https",
+    "start": "dotnet run --project src/ProjectDefense.Web --launch-profile http",
+    "build": "dotnet build ProjectDefense.sln",
+    "test": "dotnet test ProjectDefense.sln",
+    "console": "dotnet run --project src/ProjectDefense.ConsoleClient -- http://localhost:5080/",
+    "mailpit": "docker run --rm -p 8025:8025 -p 1025:1025 axllent/mailpit",
+    "db:reset": "bun -e \"require('fs').rmSync('src/ProjectDefense.Web/projectdefense.db',{force:true})\""
+  }
+}

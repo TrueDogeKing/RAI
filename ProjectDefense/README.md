@@ -113,6 +113,16 @@ dotnet test
 dotnet run --project src/ProjectDefense.Web
 ```
 
+Skróty (wymagany [Bun](https://bun.sh) lub npm – `npm run <skrypt>`):
+
+| Polecenie | Działanie |
+|---|---|
+| `bun dev` | aplikacja Web w trybie `dotnet watch` (przeładowanie po zmianach) |
+| `bun run test` | wszystkie testy |
+| `bun run console` | klient konsolowy |
+| `bun run db:reset` | usunięcie bazy SQLite (zostanie utworzona ponownie) |
+| `bun run mailpit` | lokalny serwer SMTP Mailpit w Dockerze |
+
 Aplikacja nasłuchuje pod `http://localhost:5080` (profil `https`: `https://localhost:7080`). Baza SQLite `projectdefense.db` tworzona jest automatycznie przy pierwszym uruchomieniu; po zmianie modelu wystarczy ją usunąć. Alternatywnie można przejść na migracje: `dotnet ef migrations add Initial -p src/ProjectDefense.Web` i zastąpić `EnsureCreatedAsync()` wywołaniem `MigrateAsync()`.
 
 Konta testowe (hasło `Haslo123!`, konfigurowalne w `Seed:DefaultPassword`):

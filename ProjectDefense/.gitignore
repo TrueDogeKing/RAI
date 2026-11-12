@@ -10,3 +10,4 @@ obj/
 TestResults/
 appsettings.Development.local.json
 mails/
+node_modules/
