@@ -1,0 +1,21 @@
+body {
+    font-family: system-ui, sans-serif;
+    max-width: 720px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: left;
+    padding: 0.4rem;
+    border-bottom: 1px solid #ccc;
+}
+
+.wypozyczona {
+    color: #a33;
+}

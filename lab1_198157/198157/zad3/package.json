@@ -1,0 +1,18 @@
+{
+  "name": "zad3",
+  "version": "1.0.0",
+  "description": "Testy prototypow i domkniec",
+  "main": "src/PojazdDomkniecie.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "chai": "^6.3.0",
+    "mocha": "^12.0.3"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "zad4_5",
+  "version": "1.0.0",
+  "description": "Biblioteka - logika biznesowa, testy i konstrukcje jezyka",
+  "main": "src/Biblioteka.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha",
+    "build": "babel src --out-dir src_env --presets=@babel/env",
+    "build:ie11": "babel src --out-dir src_ie11 --no-babelrc --config-file ./babel.old.json",
+    "build:chrome80": "babel src --out-dir src_chrome80 --no-babelrc --config-file ./babel.modern.json",
+    "build:all": "npm run build && npm run build:ie11 && npm run build:chrome80"
+  },
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@babel/cli": "^8.0.6",
+    "@babel/core": "^8.0.9",
+    "@babel/preset-env": "^8.0.7",
+    "chai": "^6.3.0",
+    "mocha": "^12.0.3"
+  }
+}
