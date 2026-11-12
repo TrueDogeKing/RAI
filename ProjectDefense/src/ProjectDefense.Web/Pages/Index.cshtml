@@ -1,0 +1,33 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = L["Home"];
+}
+
+<h1 class="mb-3">@L["Welcome", Model.FullName]</h1>
+
+@if (User.IsInRole(Roles.Lecturer))
+{
+    <p class="lead">@L["LecturerIntro"]</p>
+    <div class="row g-3">
+        <div class="col-md-4"><a class="btn btn-outline-primary w-100" asp-page="/Lecturer/Availability/Create">@L["GenerateSlots"]</a></div>
+        <div class="col-md-4"><a class="btn btn-outline-primary w-100" asp-page="/Lecturer/Reservations/Index">@L["Reservations"]</a></div>
+        <div class="col-md-4"><a class="btn btn-outline-primary w-100" asp-page="/Lecturer/Export/Index">@L["Export"]</a></div>
+    </div>
+}
+else if (User.IsInRole(Roles.Student))
+{
+    if (Model.ActiveReservationLabel is not null)
+    {
+        <div class="alert alert-info">@L["YourReservation"]: <strong>@Model.ActiveReservationLabel</strong></div>
+    }
+    else
+    {
+        <p class="lead">@L["NoActiveReservation"]</p>
+    }
+    <a class="btn btn-primary" asp-page="/Student/Index">@L["ChooseSlot"]</a>
+}
+else
+{
+    <p class="lead">@L["NoRole"]</p>
+}

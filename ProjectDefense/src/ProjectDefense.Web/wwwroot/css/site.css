@@ -1,0 +1,36 @@
+html {
+  position: relative;
+  min-height: 100%;
+  font-size: 15px;
+}
+
+body {
+  margin-bottom: 70px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.table td,
+.table th {
+  vertical-align: middle;
+}
+
+.status-Free {
+  color: #166534;
+}
+
+.status-Booked {
+  color: #1d4ed8;
+}
+
+.status-Blocked {
+  color: #b45309;
+}
+
+.status-Past {
+  color: #6b7280;
+}

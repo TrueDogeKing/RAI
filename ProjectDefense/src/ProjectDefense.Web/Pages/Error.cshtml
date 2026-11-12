@@ -1,0 +1,12 @@
+@page
+@model ErrorModel
+@{
+    ViewData["Title"] = L["Error"];
+}
+
+<h1 class="text-danger">@L["Error"]</h1>
+<p>@L["ErrorDescription"]</p>
+@if (Model.ShowRequestId)
+{
+    <p><strong>Request ID:</strong> <code>@Model.RequestId</code></p>
+}
