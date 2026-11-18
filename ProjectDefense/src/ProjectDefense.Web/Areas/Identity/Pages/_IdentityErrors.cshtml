@@ -1,0 +1,13 @@
+@* Błędy na poziomie modelu (klucz ""), dodawane w kodzie stron Identity po angielsku – tłumaczone przy wyświetlaniu. *@
+@if (ViewData.ModelState.TryGetValue(string.Empty, out var entry) && entry.Errors.Count > 0)
+{
+    <div class="alert alert-danger" role="alert">
+        <ul class="mb-0 ps-3">
+            @* Distinct: nazwa użytkownika = e-mail, więc DuplicateUserName i DuplicateEmail dają ten sam komunikat. *@
+            @foreach (var message in entry.Errors.Select(e => L.Translate(e.ErrorMessage)).Distinct())
+            {
+                <li>@message</li>
+            }
+        </ul>
+    </div>
+}

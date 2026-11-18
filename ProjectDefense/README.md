@@ -59,7 +59,7 @@ Role: `Lecturer` (etykieta „Prowadzący”) i `Student`. Pola `StudentId` i `I
 
 ### 4.4. Identity, role i e-mail (cz. 4)
 
-`ApplicationDbContext : IdentityDbContext<ApplicationUser>`, `RequireConfirmedAccount = true`. `DataSeeder` przy starcie tworzy schemat bazy, role, konta testowe, przykładowe sale oraz okno dostępności na najbliższe dni. Nowo zarejestrowany użytkownik automatycznie otrzymuje rolę `Student` (`ApplicationUserManager.CreateAsync`).
+`ApplicationDbContext : IdentityDbContext<ApplicationUser>`, `RequireConfirmedAccount = true`. `DataSeeder` przy starcie tworzy schemat bazy, role, konta testowe, przykładowe sale oraz – gdy w bazie nie ma żadnego przyszłego terminu – okno dostępności na najbliższe dni (dzięki temu demo działa także na starszej bazie, której sloty już minęły). Nowo zarejestrowany użytkownik automatycznie otrzymuje rolę `Student` (`ApplicationUserManager.CreateAsync`).
 
 Wybrano **lokalny serwer SMTP (Mailpit)** jako domyślną implementację `IEmailSender` (`SmtpEmailSender`), ponieważ nie wymaga konta ani klucza API i pozwala podejrzeć wiadomości w przeglądarce. W środowisku Development domyślnie używany jest `FileEmailSender`, który zapisuje wiadomości jako pliki HTML w katalogu `mails/` aplikacji i wypisuje link potwierdzający w logu konsoli, co pozwala uruchomić projekt bez serwera pocztowego. Implementacja `SendGridEmailSender` jest dostępna po ustawieniu `Email:Provider = SendGrid` i klucza `Email:SendGrid:ApiKey`. Wiadomości wysyłane są jako HTML (`IsBodyHtml = true`), dlatego encje `&amp;` w atrybucie `href` linku potwierdzającego są poprawnie dekodowane przez klienta poczty; wersja tekstowa (SendGrid) powstaje przez zdekodowanie encji HTML.
 
@@ -68,6 +68,8 @@ Autoryzacja: konwencje `AuthorizeFolder("/")` (wszystkie strony wymagają zalogo
 ### 4.5. Internacjonalizacja (cz. 5)
 
 Obsługiwane kultury `pl-PL` (domyślna) i `en-US` przez `UseRequestLocalization` z dostawcami: parametr `?culture=`, ciasteczko `.AspNetCore.Culture`, nagłówek `Accept-Language`. Przełącznik w `_Layout.cshtml` wywołuje endpoint `/culture/{culture}`, który zapisuje ciasteczko i przekierowuje (wyłącznie lokalnie) na bieżącą stronę. Teksty interfejsu, etykiety `[Display]` i komunikaty walidacji pochodzą z plików `Resources/SharedResource.resx` (angielski) i `SharedResource.pl.resx` (polski); daty i godziny formatowane są zgodnie z bieżącą kulturą.
+
+Strony ASP.NET Core Identity (logowanie, rejestracja, potwierdzenie e-mail, reset hasła, odmowa dostępu, zarządzanie kontem) również są przetłumaczone. W `Areas/Identity/Pages` nadpisano wyłącznie widoki `.cshtml` – logika `PageModel` pozostaje w bibliotece Identity UI, a widok z `@model LoginModel` jest automatycznie łączony z implementacją `LoginModel<TUser>` (atrybut `[IdentityDefaultUI]`). Etykiety i komunikaty walidacji formularzy Identity tłumaczy `IdentityUiLocalizationMetadataProvider`, błędy `UserManager` – `LocalizedIdentityErrorDescriber`, komunikaty ustawiane w kodzie Identity – `IdentityMessages`, a treść e-maili (potwierdzenie konta, reset hasła) – dekorator `LocalizedIdentityEmailSender`.
 
 ### 4.6. Minimal API i Swagger (cz. 6)
 

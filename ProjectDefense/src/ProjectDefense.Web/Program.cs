@@ -32,22 +32,22 @@ builder.Services
     })
     .AddRoles<IdentityRole>()
     .AddUserManager<ApplicationUserManager>()
+    .AddErrorDescriber<LocalizedIdentityErrorDescriber>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.Configure<EmailOptions>(builder.Configuration.GetSection(EmailOptions.SectionName));
 var emailProvider = builder.Configuration["Email:Provider"] ?? "Smtp";
-if (emailProvider.Equals("SendGrid", StringComparison.OrdinalIgnoreCase))
+var emailSenderType = emailProvider.ToLowerInvariant() switch
 {
-    builder.Services.AddTransient<IEmailSender, SendGridEmailSender>();
-}
-else if (emailProvider.Equals("File", StringComparison.OrdinalIgnoreCase))
-{
-    builder.Services.AddTransient<IEmailSender, FileEmailSender>();
-}
-else
-{
-    builder.Services.AddTransient<IEmailSender, SmtpEmailSender>();
-}
+    "sendgrid" => typeof(SendGridEmailSender),
+    "file" => typeof(FileEmailSender),
+    _ => typeof(SmtpEmailSender)
+};
+builder.Services.AddTransient(emailSenderType);
+// Dekorator tłumaczy wiadomości wysyłane przez strony Identity (potwierdzenie konta, reset hasła).
+builder.Services.AddTransient<IEmailSender>(sp => new LocalizedIdentityEmailSender(
+    (IEmailSender)sp.GetRequiredService(emailSenderType),
+    sp.GetRequiredService<Microsoft.Extensions.Localization.IStringLocalizer<SharedResource>>()));
 
 builder.Services.AddAuthorizationBuilder()
     .AddPolicy(Roles.Lecturer, policy => policy.RequireRole(Roles.Lecturer))
@@ -81,6 +81,11 @@ builder.Services
     {
         options.DataAnnotationLocalizerProvider = (_, factory) => factory.Create(typeof(SharedResource));
     });
+
+// Etykiety i komunikaty walidacji formularzy Identity (InputModel z biblioteki Identity UI).
+builder.Services.AddOptions<Microsoft.AspNetCore.Mvc.MvcOptions>()
+    .Configure<Microsoft.Extensions.Localization.IStringLocalizerFactory>((options, factory) =>
+        options.ModelMetadataDetailsProviders.Add(new IdentityUiLocalizationMetadataProvider(factory)));
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>

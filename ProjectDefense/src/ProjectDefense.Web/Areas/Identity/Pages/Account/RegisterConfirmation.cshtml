@@ -1,0 +1,16 @@
+@page
+@model RegisterConfirmationModel
+@{
+    ViewData["Title"] = L["RegisterConfirmationTitle"];
+}
+
+<h1>@ViewData["Title"]</h1>
+@if (Model.DisplayConfirmAccountLink)
+{
+    <p>@L["RegisterConfirmationNoSender"]</p>
+    <p><a id="confirm-link" href="@Model.EmailConfirmationUrl">@L["ClickToConfirm"]</a></p>
+}
+else
+{
+    <p>@L["RegisterConfirmationText", Model.Email ?? string.Empty]</p>
+}

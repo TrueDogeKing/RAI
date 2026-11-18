@@ -1,0 +1,9 @@
+@page
+@model ConfirmEmailModel
+@{
+    ViewData["Title"] = L["ConfirmEmailTitle"];
+}
+
+<h1>@ViewData["Title"]</h1>
+<partial name="_IdentityStatus" model="Model.StatusMessage" />
+<p><a asp-page="./Login">@L["ClickToLogin"]</a></p>

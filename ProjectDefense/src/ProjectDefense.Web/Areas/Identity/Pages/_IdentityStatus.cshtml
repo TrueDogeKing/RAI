@@ -1,0 +1,10 @@
+@model string?
+@if (!string.IsNullOrEmpty(Model))
+{
+    // Identity oznacza błędy prefiksem "Error" – kolor ustalamy przed tłumaczeniem.
+    var css = Model.StartsWith("Error", StringComparison.Ordinal) ? "danger" : "success";
+    <div class="alert alert-@css alert-dismissible fade show" role="alert">
+        @L.Translate(Model)
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}

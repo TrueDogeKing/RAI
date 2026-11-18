@@ -446,4 +446,259 @@
   <data name="YourReservation" xml:space="preserve">
     <value>Your reservation</value>
   </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Confirm password</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Remember me</value>
+  </data>
+  <data name="NewEmail" xml:space="preserve">
+    <value>New e-mail</value>
+  </data>
+  <data name="OldPassword" xml:space="preserve">
+    <value>Current password</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>New password</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Phone number</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="InvalidEmail" xml:space="preserve">
+    <value>The {0} field is not a valid e-mail address.</value>
+  </data>
+  <data name="InvalidPhone" xml:space="preserve">
+    <value>The {0} field is not a valid phone number.</value>
+  </data>
+  <data name="PasswordLength" xml:space="preserve">
+    <value>The {0} must be at least {2} and at most {1} characters long.</value>
+  </data>
+  <data name="PasswordMismatch" xml:space="preserve">
+    <value>The passwords do not match.</value>
+  </data>
+  <data name="LoginTitle" xml:space="preserve">
+    <value>Log in</value>
+  </data>
+  <data name="LoginIntro" xml:space="preserve">
+    <value>Use your account to log in.</value>
+  </data>
+  <data name="ForgotPasswordLink" xml:space="preserve">
+    <value>Forgot your password?</value>
+  </data>
+  <data name="RegisterAsNewUser" xml:space="preserve">
+    <value>Register as a new user</value>
+  </data>
+  <data name="ResendConfirmationLink" xml:space="preserve">
+    <value>Resend e-mail confirmation</value>
+  </data>
+  <data name="RegisterTitle" xml:space="preserve">
+    <value>Create a new account</value>
+  </data>
+  <data name="RegisterIntro" xml:space="preserve">
+    <value>New accounts are given the Student role. You will receive a link to confirm your e-mail address.</value>
+  </data>
+  <data name="HaveAccountLogin" xml:space="preserve">
+    <value>Already have an account? Log in</value>
+  </data>
+  <data name="RegisterConfirmationTitle" xml:space="preserve">
+    <value>Confirm your e-mail</value>
+  </data>
+  <data name="RegisterConfirmationText" xml:space="preserve">
+    <value>We have sent a confirmation link to {0}. Please check your inbox to activate the account.</value>
+  </data>
+  <data name="RegisterConfirmationNoSender" xml:space="preserve">
+    <value>No e-mail sender is configured. Confirm the account using the link below.</value>
+  </data>
+  <data name="ClickToConfirm" xml:space="preserve">
+    <value>Click here to confirm your account</value>
+  </data>
+  <data name="ConfirmEmailTitle" xml:space="preserve">
+    <value>E-mail confirmation</value>
+  </data>
+  <data name="ConfirmEmailChangeTitle" xml:space="preserve">
+    <value>E-mail change confirmation</value>
+  </data>
+  <data name="ClickToLogin" xml:space="preserve">
+    <value>Click here to log in.</value>
+  </data>
+  <data name="ResendConfirmationTitle" xml:space="preserve">
+    <value>Resend e-mail confirmation</value>
+  </data>
+  <data name="ResendConfirmationIntro" xml:space="preserve">
+    <value>Enter your e-mail address and we will send the confirmation link again.</value>
+  </data>
+  <data name="Resend" xml:space="preserve">
+    <value>Resend</value>
+  </data>
+  <data name="ForgotPasswordTitle" xml:space="preserve">
+    <value>Reset your password</value>
+  </data>
+  <data name="ForgotPasswordIntro" xml:space="preserve">
+    <value>Enter your e-mail address and we will send you a password reset link.</value>
+  </data>
+  <data name="SendResetLink" xml:space="preserve">
+    <value>Send reset link</value>
+  </data>
+  <data name="ForgotPasswordConfirmationText" xml:space="preserve">
+    <value>Please check your e-mail to reset your password.</value>
+  </data>
+  <data name="ResetPasswordTitle" xml:space="preserve">
+    <value>Set a new password</value>
+  </data>
+  <data name="ResetPasswordButton" xml:space="preserve">
+    <value>Set password</value>
+  </data>
+  <data name="ResetPasswordConfirmationText" xml:space="preserve">
+    <value>Your password has been reset.</value>
+  </data>
+  <data name="LoggedOutText" xml:space="preserve">
+    <value>You have been logged out.</value>
+  </data>
+  <data name="AccessDeniedTitle" xml:space="preserve">
+    <value>Access denied</value>
+  </data>
+  <data name="AccessDeniedText" xml:space="preserve">
+    <value>You do not have permission to view this page.</value>
+  </data>
+  <data name="LockoutTitle" xml:space="preserve">
+    <value>Account locked</value>
+  </data>
+  <data name="LockoutText" xml:space="preserve">
+    <value>This account has been temporarily locked after too many failed login attempts. Please try again later.</value>
+  </data>
+  <data name="ManageAccount" xml:space="preserve">
+    <value>Manage your account</value>
+  </data>
+  <data name="ManageSubtitle" xml:space="preserve">
+    <value>Change your account settings</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="Verified" xml:space="preserve">
+    <value>Verified</value>
+  </data>
+  <data name="SendVerificationEmail" xml:space="preserve">
+    <value>Send verification e-mail</value>
+  </data>
+  <data name="ChangeEmail" xml:space="preserve">
+    <value>Change e-mail</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Change password</value>
+  </data>
+  <data name="UpdatePassword" xml:space="preserve">
+    <value>Update password</value>
+  </data>
+  <data name="PersonalData" xml:space="preserve">
+    <value>Personal data</value>
+  </data>
+  <data name="PersonalDataText" xml:space="preserve">
+    <value>Your account contains personal data. You can download it or permanently delete your account.</value>
+  </data>
+  <data name="DownloadPersonalData" xml:space="preserve">
+    <value>Download my data</value>
+  </data>
+  <data name="DeleteAccount" xml:space="preserve">
+    <value>Delete account</value>
+  </data>
+  <data name="DeleteAccountWarning" xml:space="preserve">
+    <value>Deleting the account removes your data permanently and cannot be undone.</value>
+  </data>
+  <data name="DeleteAccountConfirm" xml:space="preserve">
+    <value>Delete data and close my account</value>
+  </data>
+  <data name="InvalidLoginAttempt" xml:space="preserve">
+    <value>Invalid login attempt. Check your e-mail and password, and make sure the account has been confirmed.</value>
+  </data>
+  <data name="VerificationEmailSent" xml:space="preserve">
+    <value>Verification e-mail sent. Please check your inbox.</value>
+  </data>
+  <data name="EmailConfirmed" xml:space="preserve">
+    <value>Thank you for confirming your e-mail.</value>
+  </data>
+  <data name="EmailConfirmError" xml:space="preserve">
+    <value>Error: the e-mail address could not be confirmed.</value>
+  </data>
+  <data name="EmailChangeConfirmed" xml:space="preserve">
+    <value>Thank you for confirming your e-mail change.</value>
+  </data>
+  <data name="EmailChangeError" xml:space="preserve">
+    <value>Error: the e-mail address could not be changed.</value>
+  </data>
+  <data name="UserNameChangeError" xml:space="preserve">
+    <value>Error: the user name could not be changed.</value>
+  </data>
+  <data name="ProfileUpdated" xml:space="preserve">
+    <value>Your profile has been updated.</value>
+  </data>
+  <data name="PhoneUpdateError" xml:space="preserve">
+    <value>Error: the phone number could not be saved.</value>
+  </data>
+  <data name="EmailChangeLinkSent" xml:space="preserve">
+    <value>A confirmation link has been sent to the new address. Please check your inbox.</value>
+  </data>
+  <data name="EmailUnchanged" xml:space="preserve">
+    <value>Your e-mail address is unchanged.</value>
+  </data>
+  <data name="PasswordChanged" xml:space="preserve">
+    <value>Your password has been changed.</value>
+  </data>
+  <data name="IncorrectPassword" xml:space="preserve">
+    <value>Incorrect password.</value>
+  </data>
+  <data name="IdentityDefaultError" xml:space="preserve">
+    <value>An unknown error has occurred.</value>
+  </data>
+  <data name="IdentityInvalidToken" xml:space="preserve">
+    <value>The link is invalid or has expired.</value>
+  </data>
+  <data name="IdentityInvalidUserName" xml:space="preserve">
+    <value>User name '{0}' is invalid.</value>
+  </data>
+  <data name="IdentityInvalidEmail" xml:space="preserve">
+    <value>E-mail '{0}' is invalid.</value>
+  </data>
+  <data name="IdentityDuplicateEmail" xml:space="preserve">
+    <value>E-mail '{0}' is already taken.</value>
+  </data>
+  <data name="IdentityPasswordTooShort" xml:space="preserve">
+    <value>Passwords must be at least {0} characters.</value>
+  </data>
+  <data name="IdentityPasswordRequiresUniqueChars" xml:space="preserve">
+    <value>Passwords must use at least {0} different characters.</value>
+  </data>
+  <data name="IdentityPasswordRequiresNonAlphanumeric" xml:space="preserve">
+    <value>Passwords must have at least one non-alphanumeric character.</value>
+  </data>
+  <data name="IdentityPasswordRequiresDigit" xml:space="preserve">
+    <value>Passwords must have at least one digit ('0'-'9').</value>
+  </data>
+  <data name="IdentityPasswordRequiresLower" xml:space="preserve">
+    <value>Passwords must have at least one lowercase letter ('a'-'z').</value>
+  </data>
+  <data name="IdentityPasswordRequiresUpper" xml:space="preserve">
+    <value>Passwords must have at least one uppercase letter ('A'-'Z').</value>
+  </data>
+  <data name="ConfirmEmailSubject" xml:space="preserve">
+    <value>Confirm your e-mail</value>
+  </data>
+  <data name="ConfirmEmailBody" xml:space="preserve">
+    <value>Please confirm your ProjectDefense account by &lt;a href='{0}'&gt;clicking here&lt;/a&gt;.</value>
+  </data>
+  <data name="ResetPasswordSubject" xml:space="preserve">
+    <value>Reset your password</value>
+  </data>
+  <data name="ResetPasswordBody" xml:space="preserve">
+    <value>You can set a new password by &lt;a href='{0}'&gt;clicking here&lt;/a&gt;.</value>
+  </data>
 </root>
