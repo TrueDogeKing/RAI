@@ -46,20 +46,32 @@ public static class DataSeeder
             await context.SaveChangesAsync();
         }
 
-        if (configuration.GetValue("Seed:DemoAvailability", true) && !await context.LecturerAvailabilities.AnyAsync())
+        // Demo okno tworzone, gdy w systemie nie ma żadnego przyszłego terminu – także w bazie,
+        // której wcześniejsze sloty zdążyły już przeminąć (inaczej student nie miałby czego rezerwować).
+        var timeProvider = provider.GetRequiredService<TimeProvider>();
+        var now = timeProvider.GetLocalNow().DateTime;
+        if (configuration.GetValue("Seed:DemoAvailability", true) && !await context.ReservationSlots.AnyAsync(s => s.StartTime > now))
         {
             var availabilityService = provider.GetRequiredService<IAvailabilityService>();
-            var timeProvider = provider.GetRequiredService<TimeProvider>();
-            var room = await context.Rooms.OrderBy(r => r.Id).FirstAsync();
-            var tomorrow = DateOnly.FromDateTime(timeProvider.GetLocalNow().DateTime).AddDays(1);
+            var tomorrow = DateOnly.FromDateTime(now).AddDays(1);
+            var roomIds = await context.Rooms.OrderBy(r => r.Id).Select(r => r.Id).ToListAsync();
 
-            await availabilityService.CreateAsync(lecturer.Id, new AvailabilityRequest(
-                room.Id,
-                tomorrow,
-                tomorrow.AddDays(4),
-                new TimeOnly(10, 0),
-                new TimeOnly(12, 0),
-                15));
+            // Pierwsza sala bez kolizji z istniejącymi oknami (reguła z AvailabilityService nadal obowiązuje).
+            foreach (var roomId in roomIds)
+            {
+                var result = await availabilityService.CreateAsync(lecturer.Id, new AvailabilityRequest(
+                    roomId,
+                    tomorrow,
+                    tomorrow.AddDays(4),
+                    new TimeOnly(10, 0),
+                    new TimeOnly(12, 0),
+                    15));
+
+                if (result.Succeeded)
+                {
+                    break;
+                }
+            }
         }
     }
 
